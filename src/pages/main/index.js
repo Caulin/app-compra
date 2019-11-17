@@ -24,7 +24,7 @@ export default class Main extends Component {
                                 <div class="caption">
                                     <h3>{produto.titulo}</h3>
                                     <p>{produto.descricao}</p>
-                                    <p>{produto.preco}R$</p>
+                                    <p>R${produto.preco},00</p>
                                 </div>
                             </div>
                         </div>
