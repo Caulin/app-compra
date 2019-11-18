@@ -4,13 +4,16 @@ import api from '../../services/api';
 
 export default class Main extends Component {
     state = {
-        produtos: []
+        produtos: [],
+        mesagem:[]
     }
     componentDidMount() {
         this.loadProducts();
     }
     loadProducts = async () => {
+       
         const response = await api.get('/produtos/lista');
+        
         this.setState({ produtos: response.data });
     }
     render() {
@@ -18,10 +21,10 @@ export default class Main extends Component {
             <div className='product-list'>
                 <div className="row">
                     {this.state.produtos.map(produto => (
-                        <div className="col-sm-6 col-md-4">
-                            <div className="thumbnail">
+                        <div className="col-sm-6 col-md-4" key={produto._id}>
+                            <div className="thumbnail" >
                                 <img src={produto.imgPath} alt='' />
-                                <div class="caption">
+                                <div className="caption">
                                     <h3>{produto.titulo}</h3>
                                     <p>{produto.descricao}</p>
                                     <p>R${produto.preco},00</p>
